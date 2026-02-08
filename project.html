@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Mess / Hostel Meal Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="stu.css" />
+</head>
+<body>
+  <header>
+    <h1>Smart Mess / Hostel Meal Management</h1>
+    <div id="offline-banner" class="banner hidden">You are offline. Submissions will sync when online.</div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Student meal registration</h2>
+      <form id="meal-form">
+        <label>
+          <!-- Name -->
+          <input type="text" id="name" placeholder="Enter your name" required />
+        </label>
+        <label>
+          Room number
+          <input type="text" id="roomNumber" placeholder="Enter room number" required />
+        </label>
+        <label>
+          Meal type
+          <select id="mealType" required>
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+          </select>
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="toast" class="toast hidden"></div>
+      <div id="recommendation" class="recommendation"></div>
+    </section>
+
+    <section class="card">
+      <h2>Today's menu</h2>
+      <div id="menu">
+        <p><strong>Breakfast:</strong> <span id="m-breakfast">—</span></p>
+        <p><strong>Lunch:</strong> <span id="m-lunch">—</span></p>
+        <p><strong>Dinner:</strong> <span id="m-dinner">—</span></p>
+      </div>
+
+      <h3>Today's registrations</h3>
+      <ul id="today-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <a href="admin.html">Admin panel</a>
+  </footer>
+
+  <script src="idb.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+</body>
+</html>
